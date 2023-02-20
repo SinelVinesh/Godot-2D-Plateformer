@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/background.png" type="Texture" id=4]
+[ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/GUI/Ingame GUi.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/braga.scenebrush2D/SceneBrush2D.gd" type="Script" id=7]
 
 [node name="LevelTemplate" type="Node2D"]
 
@@ -29,4 +32,22 @@ format = 1
 tile_data = PoolIntArray( 65535, 0, 0, 0, 0, 0, 15, 0, 0, 16, 0, 0, 131071, 0, 0, 65536, 0, 0, 65551, 0, 0, 65552, 0, 0, 196607, 0, 0, 131072, 0, 0, 131087, 0, 0, 131088, 0, 0, 262143, 0, 0, 196608, 0, 0, 196623, 0, 0, 196624, 0, 0, 327679, 0, 0, 262144, 0, 0, 262159, 0, 0, 262160, 0, 0, 393215, 0, 0, 327680, 0, 0, 327695, 0, 0, 327696, 0, 0, 458751, 0, 0, 393216, 0, 0, 393231, 0, 0, 393232, 0, 0, 524287, 0, 0, 458752, 0, 0, 458767, 0, 0, 458768, 0, 0, 589823, 0, 0, 524288, 0, 0, 524292, 0, 0, 524293, 0, 0, 524303, 0, 0, 524304, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 160, 555 )
+position = Vector2( 153, 519 )
+
+[node name="Ingame GUi" parent="." instance=ExtResource( 6 )]
+
+[node name="Coins" type="Node2D" parent="."]
+script = ExtResource( 7 )
+_scenes = [ ExtResource( 5 ) ]
+
+[node name="Coin" type="Node2D" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 390, 433 )
+
+[node name="Coin2" type="Node2D" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 1103, 437 )
+
+[node name="Coin3" type="Node2D" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 784, 514 )
+
+[node name="Coin4" type="Node2D" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 781, 357 )

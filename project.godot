@@ -23,10 +23,18 @@ _global_script_class_icons={
 config/name="2D Plateformer"
 config/icon="res://icon.png"
 
+[autoload]
+
+SignalBus="*res://src/Signal/SignalBus.gd"
+
 [display]
 
 window/size/width=1366
 window/size/height=768
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/braga.scenebrush2D/plugin.cfg" )
 
 [gui]
 
