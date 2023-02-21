@@ -2,14 +2,16 @@ extends Actor
 
 export var stomp_impulse = 1000.0
 var jump_count = 0
+export var multi_jump_limit = 2
+export var enable_multiple_jump = true
 
-func _on_EnemyDetector_area_entered(area:Area2D):
+func _on_EnemyDetector_area_entered(_area:Area2D):
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
 
-func _on_EnemyDetector_body_entered(body:Node):
+func _on_EnemyDetector_body_entered(_body:Node):
 	queue_free()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	var direction: = get_direction()
 	_velocity = calculate_move_velocity(_velocity, speed, direction, is_jump_interrupted)
@@ -17,10 +19,16 @@ func _physics_process(delta):
 
 func get_direction() -> Vector2:
 
-	return Vector2(
+	var direction = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		-1.0 if Input.is_action_pressed("jump") and is_on_floor() else 1.0        
+		1.0       
 	)
+	if((Input.is_action_just_pressed("jump") and is_on_floor()) or (Input.is_action_just_pressed("jump") and enable_multiple_jump and jump_count < multi_jump_limit)):
+		jump_count+=1
+		direction.y = -1.0
+	elif (is_on_floor()):
+		jump_count = 0
+	return direction
 
 func calculate_move_velocity(
 		linear_velocity:Vector2,

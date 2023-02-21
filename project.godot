@@ -21,11 +21,13 @@ _global_script_class_icons={
 [application]
 
 config/name="2D Plateformer"
+run/main_scene="res://src/Levels/Level01.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-SignalBus="*res://src/Signal/SignalBus.gd"
+SignalBus="*res://src/Singletons/SignalBus.gd"
+Inventory="*res://src/Singletons/Inventory.gd"
 
 [display]
 
