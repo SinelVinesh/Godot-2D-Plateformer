@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://addons/braga.scenebrush2D/SceneBrush2D.gd" type="Script" id=1]
+[ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/GUI/Ingame GUi.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/tileset.tres" type="TileSet" id=7]
+[ext_resource path="res://assets/background.png" type="Texture" id=8]
+
+[node name="Level02" type="Node2D"]
+
+[node name="Portal" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2032, 368 )
+
+[node name="Enemy" parent="Portal" instance=ExtResource( 5 )]
+position = Vector2( -664, 352 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 554.0
+margin_bottom = 312.0
+texture = ExtResource( 8 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 80, 80 )
+collision_layer = 8
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 65535, 0, 0, 0, 0, 0, 28, 0, 0, 29, 0, 0, 131071, 0, 0, 65536, 0, 0, 65564, 0, 0, 65565, 0, 0, 196607, 0, 0, 131072, 0, 0, 131100, 0, 0, 131101, 0, 0, 262143, 0, 0, 196608, 0, 0, 196636, 0, 0, 196637, 0, 0, 327679, 0, 0, 262144, 0, 0, 262172, 0, 0, 262173, 0, 0, 393215, 0, 0, 327680, 0, 0, 327708, 0, 0, 327709, 0, 0, 458751, 0, 0, 393216, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 393244, 0, 0, 393245, 0, 0, 524287, 0, 0, 458752, 0, 0, 458780, 0, 0, 458781, 0, 0, 589823, 0, 0, 524288, 0, 0, 524297, 0, 0, 524298, 0, 0, 524306, 0, 0, 524307, 0, 0, 524316, 0, 0, 524317, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 0, 0, 655388, 0, 0, 655389, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 168, 616 )
+stomp_impulse = 1500.0
+enable_multiple_jump = false
+
+[node name="Ingame GUi" parent="." instance=ExtResource( 6 )]
+
+[node name="Coins" type="Node2D" parent="."]
+script = ExtResource( 1 )
+_scenes = [ ExtResource( 2 ) ]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 800, 584 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 1536, 576 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 1600, 480 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 1728, 424 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 1848, 408 )
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 2 )]
+position = Vector2( 1176, 208 )
