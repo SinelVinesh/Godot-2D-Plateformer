@@ -6,7 +6,6 @@ export var can_impulse: = false
 
 func _on_body_entered(_body:Node):
 	SignalBus.emit_signal("coin_picked")
-	print("picked")
 	animation_player.play("Fade out")
 	yield(animation_player,"animation_finished")
 	queue_free()
