@@ -5,7 +5,7 @@ var jump_count = 0
 export var multi_jump_limit = 2
 export var enable_multiple_jump = true
 
-func _on_EnemyDetector_area_entered(_area:Area2D):
+func _on_BumpDetector_area_entered(_area:Area2D):
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
 
 func _on_EnemyDetector_body_entered(_body:Node):

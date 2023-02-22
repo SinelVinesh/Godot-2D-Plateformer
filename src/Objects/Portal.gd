@@ -1,4 +1,3 @@
-tool
 extends Node2D
 
 onready var animation_player = $Area2D/AnimationPlayer
